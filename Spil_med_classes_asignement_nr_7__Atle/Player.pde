@@ -55,6 +55,7 @@ class Player {
   }
 }
 
+//Credit til Nicolai for at lære mig hvordan man extender en class, og hvordan man bruger "super"
 class Enemy extends Player { // an extension of the Player class. 
   boolean active;
 

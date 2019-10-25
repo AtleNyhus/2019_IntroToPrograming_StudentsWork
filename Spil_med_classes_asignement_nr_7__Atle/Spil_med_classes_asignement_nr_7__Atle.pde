@@ -3,7 +3,8 @@ int highscore = 0;
 color backgroundcolor = color(200);
 color player_loose = color(255, 0, 100);
 
-//Player variables
+//player variables
+Player myPlayer;
 float player_x;
 float player_y;
 color player_color = color(0, 255, 0);
@@ -37,9 +38,11 @@ float sb_radius = 10;
 // Player obstacle1 = new Player(obstacle1_x, obstacle1_y, obstacle_color, obstacle_radius, obstacle1_xspeed, obstacle1_yspeed);
 Player scoreball = new Player(sb_initialx, sb_initialy, sb_color, sb_radius, 0, 0);
 
+//Init the scoreboards. 
+Scoreboard myScoreboard;
+Scoreboard myHighscore;
 
-
-int nmb = 20;
+int nmb = 20; //Max obstacles on the screen
 int obstacleIndex;
 Enemy [] obstacles = new Enemy[nmb];
 
@@ -57,24 +60,29 @@ void setup() {
 void draw () {
   background(backgroundcolor);
 
-  Scoreboard myScoreboard = new Scoreboard(scoreboardsize, scoreboardcolor, scoreboardx, scoreboardy, scoretext_x, scoreboardy);
-  Scoreboard myHighscore = new Scoreboard(scoreboardsize, scoreboardcolor, scoreboardx2, scoreboardy, highscoretext_x, scoreboardy); 
-  Player myPlayer = new Player(player_x, player_y, player_color, player_r, 0, 0);
+  myScoreboard = new Scoreboard(scoreboardsize, scoreboardcolor, scoreboardx, scoreboardy, scoretext_x, scoreboardy);
+  myHighscore = new Scoreboard(scoreboardsize, scoreboardcolor, scoreboardx2, scoreboardy, highscoretext_x, scoreboardy); 
+  myPlayer = new Player(player_x, player_y, player_color, player_r, 0, 0);
+  
   player_x = mouseX;
   player_y = mouseY;
   scoreboardx2 = width-50;
   highscoretext_x = 380;
-
+  
+  //Displays "myPlayer"
   myPlayer.display();
 
-// Tries to access .display and .collision on all the obstacles, but fails if obstacles.activate = false.
+  // Tries to access .display and .collision on all the obstacles, but fails if obstacles.activate = false.
   for (int i = 0; i < obstacles.length; i++) {  
     obstacles[i].display();
     obstacles[i].collision(myPlayer);
   }
-
-  myPlayer.score(scoreball);
+  
+  //Displays the "scoreball"
   scoreball.display();
+  
+  //Allows "myPlayer" to interact with "scoreball"
+  myPlayer.score(scoreball);
 
 
   // Displays the scoreboards
@@ -85,7 +93,8 @@ void draw () {
   if (score > highscore) {
     highscore = score;
   }
-  println(obstacleIndex); // for debugging
+  
+  //println(obstacleIndex); // for debugging
 }
 
 void activateObstacle() { // Sets the next obstacle.activate in the array to True.
