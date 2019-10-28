@@ -39,6 +39,7 @@ class Player {
 
       for (int i = 0; i < obstacles.length; i++) { //This for loop set every Enemy.active to false, thus not letting them be displayed.
         obstacles[i].active = false; 
+        if (obstacleIndex > 0) obstacleIndex--;
       }
       score = 0;
     }
@@ -50,7 +51,7 @@ class Player {
       scoreball.x = random(0, width); // Spawns new scoreball
       scoreball.y = random(0, height);
 
-      activateObstacle(); // Sets a new Enemy.activate to true. 
+      activateObstacle(); // Sets a new Enemy.activate to true.
     }
   }
 }
@@ -65,7 +66,7 @@ class Enemy extends Player { // an extension of the Player class.
 
   void display() {
     if (!active) return; // returns null instead of .display if activate = false. 
-    super.display(); //Calls the same .display function of the Player class. 
+    super.display(); //Calls the same .display function of the Player class.
   }
 
   void collision(Player _player) { // same as display, but with collision. 
