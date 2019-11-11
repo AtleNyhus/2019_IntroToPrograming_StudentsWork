@@ -26,9 +26,9 @@ void draw () {
   myFlower = new Object(petals, 0, colorP, colorC);
 
 
-
-  for (int i = index-1; i > 0; i--) {
-    x[i] = x[i-1];
+  // Thank you to Processing tutorial 
+  for (int i = index-1; i > 0; i--) { // Shifts all the x[i] values down one step
+    x[i] = x[i-1]; 
     y[i] = y[i-1];
   }
 
@@ -36,7 +36,7 @@ void draw () {
   y[0] = mouseY;
   fill(255, 102);
   //myFlower.flower();
-  for (int i = 0; i < index; i++) myFlower.flower(x[i], y[i], i/r);
+  for (int i = 0; i < index; i++) myFlower.flower(x[i], y[i], i/2);
   //myFlower.move();
   //myFlower.bounce();
 }
