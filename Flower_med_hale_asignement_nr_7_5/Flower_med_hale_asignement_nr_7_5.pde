@@ -31,12 +31,16 @@ void draw () {
     x[i] = x[i-1]; 
     y[i] = y[i-1];
   }
+  
 
   x[0] = mouseX;
   y[0] = mouseY;
   fill(255, 102);
   //myFlower.flower();
-  for (int i = 0; i < index; i++) myFlower.flower(x[i], y[i], i/2);
+  for (int i = 0; i < index; i++) {
+    float m = map(x[i], 0, 255, 0, index*2);
+    myFlower.flower(x[i], y[i], i/2, m);
+  }
   //myFlower.move();
   //myFlower.bounce();
 }

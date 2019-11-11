@@ -29,17 +29,17 @@ class Object {
 
 
 
-  void flower(float x, float y, float r) {
+  void flower(float x, float y, float r, float trans) {
     float ballX;
     float ballY;
-    fill(petalcolor);
+    fill(petalcolor, trans);
     //This code draws the shape of the flower - Based on the code from "FlowerFunctionParameters"
     for (float i=0; i<PI*2; i+=2*PI/petals) { //draw "petals" amount of small petals. 
       ballX=r*cos(i);
       ballY=r*sin(i);
       ellipse(x+ballX, y+ballY, r, r);
     }
-    fill(flowercentercolor);
+    fill(flowercentercolor, trans);
     ellipse(x, y, r*1.2, r*1.2); //draws flower center
   }
 
