@@ -69,7 +69,7 @@ void draw () {
   y_[indexPos] = mouseY;
   indexPos = (indexPos+1) % num; // cycles indexPos to num. When it hits num, sets it to 0. 
   for (int i = 0; i < num; i++) { //standard for-loop
-    int pos = (indexPos + i) % num; // pos = cycles through all the playses in the aray (same as above), from the indexPos, instead of from 0. 
+    int pos = (indexPos + i) % num; // pos = cycles through all the places in the aray (same as above), from the indexPos, instead of from 0. 
     float radius = (num-i); //set the radi acoarding to num and i
     fill(circleColour, i*opSpeed); // controls the color and opaquecity
     ellipse(x_[pos], y_[pos], radius, radius); //Draws all the circles. 
